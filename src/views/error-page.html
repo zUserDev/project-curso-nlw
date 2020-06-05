@@ -1,0 +1,26 @@
+{% extends "layout.html" %} 
+{% set pageId = "error-page" %} 
+
+{% block title %}
+<title>Ecoleta</title>
+
+{% endblock title %} {% block styles %}
+<link rel="stylesheet" type="text/css" href="/styles/error-page.css" />
+{% endblock styles %}
+
+<div id="{{ pageId }}">
+  {% block content %}
+    <center>
+      <h1>Erro no Cadastro!</h1>
+      <h4>Tenta novamente.</h4>
+    </center>
+  {% endblock content %}
+</div>
+
+{% block scripts %}
+  <script type="text/javascript">
+    setTimeout(() => {
+      window.location = "/create-point"
+    }, 2000)
+  </script>
+{% endblock scripts %}

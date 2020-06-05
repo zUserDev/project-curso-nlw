@@ -1,0 +1,14 @@
+#error-page {
+  margin-top: 300px;
+}
+
+#error-page .content h1 {
+  font-size: 150px;
+  font-weight: bold;
+  color: var(--title-color);
+}
+
+#error-page .content h4 {
+  font-size: 50px;
+  color: var(--primary-color);
+}
