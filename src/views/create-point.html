@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% set pageId = "page-create-point" %}
+
+{% block title %}
+    <title>Criar um ponto de coleta</title>
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="/styles/create-point.css">
+    <link rel="stylesheet" type="text/css" href="/styles/modal.css">
+{% endblock styles %}
+
+{% block content %}
+    {% include "partials/page-header.html" %}
+    <form action="/savepoint" method="POST">
+        <h1>Cadastro do ponto de coleta</h1>
+
+        <fieldset>
+            <legend>
+                <h2>Dados da entidade</h2>
+            </legend>
+            <div class="field-group">
+                <div class="field">
+                    <label for="name">Nome da entidade</label>
+                    <input type="text" name="name" required="required">
+                </div>
+                <div class="field">
+                    <label for="name">Imagem da entidade</label>
+                    <input 
+                        type="url" 
+                        name="image"
+                        placeholder="http://"
+                        required="required">
+                </div>
+            </div>
+            <div class="field-group">
+                <div class="field">
+                    <label for="address">Endereço</label>
+                    <input type="text" name="address" required="required">
+                </div>
+                <div class="field">
+                    <label for="address2">Número/Complemento</label>
+                    <input type="text" name="address2" required="required">
+                </div>
+            </div>
+            <div class="field-group">
+                <div class="field">
+                    <label for="state">Estado</label>
+                    <select name="uf" required="required">
+                        <option value="">Selecione o Estado</option>
+                    </select>
+
+                    <input type="hidden" name="state">
+                </div>
+                <div class="field">
+                    <label for="city">Cidade</label>
+                    <select name="city" disabled="disabled" required="required">
+                        <option value="">Selecione a Cidade</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>
+                <h2>Item de coleta</h2>
+                <span>Selecione um ou mais itens abaixo</span>
+            </legend>
+
+            <div class="items-grid">
+                <li data-id="Lâmpadas">
+                    <img src="https://cdn.glitch.com/95b7c852-b549-4af2-bbf3-707ff8debc72%2Flampadas.svg?v=1591363800761" alt="Lâmpadas">
+                    <span>Lâmpadas</span>
+                </li>
+                <li data-id="Baterias">
+                    <img src="https://cdn.glitch.com/95b7c852-b549-4af2-bbf3-707ff8debc72%2Fbaterias.svg?v=1591363771750" alt="Baterias">
+                    <span>Baterias</span>
+                </li>
+                <li data-id="Papéis e Papelão">
+                    <img src="https://cdn.glitch.com/95b7c852-b549-4af2-bbf3-707ff8debc72%2Fpapeis-papelao.svg?v=1591363849634" alt="Papéis e Papelão">
+                    <span>Papéis e Papelão</span>
+                </li>
+                <li data-id="Resíduos Eletrônicos">
+                    <img src="https://cdn.glitch.com/95b7c852-b549-4af2-bbf3-707ff8debc72%2Feletronicos.svg?v=1591363778351" alt="Resíduos Eletrônicos">
+                    <span>Resíduos Eletrônicos</span>
+                </li>
+                <li data-id="Resíduos Orgânicos">
+                    <img src="https://cdn.glitch.com/95b7c852-b549-4af2-bbf3-707ff8debc72%2Forganicos.svg?v=1591363839337" alt="Resíduos Orgânicos">
+                    <span>Resíduos Orgânicos</span>
+                </li>
+                <li data-id="Óleo de Cozinha">
+                    <img src="https://cdn.glitch.com/95b7c852-b549-4af2-bbf3-707ff8debc72%2Foleo.svg?v=1591363817696" alt="Óleo de Cozinha">
+                    <span>Óleo de Cozinha</span>
+                </li>
+            </div>
+
+            <input type="hidden" name="items">
+        </fieldset>
+
+        <button type="submit">Cadastrar ponto de coleta</button>
+    </form>
+
+
+
+{% endblock content %}
+
+{% block modal %}
+  {% if saved %}
+      {% include "partials/point-created.html" %}
+  {% endif %}
+{% endblock modal %}
+
+{% block scripts %}
+    <script src="scripts/create-point.js" type="text/javascript"></script>
+{% endblock scripts %}
